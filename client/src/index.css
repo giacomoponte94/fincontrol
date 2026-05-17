@@ -1,0 +1,229 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* ============================================================
+   LIGHT MODE — Paleta GImports
+   Background: #F0F2F5 (cinza claro quase branco)
+   Primary:    #1B3A6B (azul marinho profundo)
+   Accent:     #2E6FA3 (azul aço)
+   Highlight:  #4BAFD6 (azul ciano/celeste)
+   Text:       #1A2B45
+   ============================================================ */
+:root {
+  --radius: 0.625rem;
+
+  /* Background: cinza claro quase branco (#F0F2F5) */
+  --background: oklch(0.955 0.008 240);
+  /* Foreground: azul marinho escuro (#1A2B45) */
+  --foreground: oklch(0.22 0.06 240);
+
+  /* Cards: branco puro com leve tom frio */
+  --card: oklch(0.99 0.003 240);
+  --card-foreground: oklch(0.22 0.06 240);
+
+  /* Popover */
+  --popover: oklch(0.99 0.003 240);
+  --popover-foreground: oklch(0.22 0.06 240);
+
+  /* Primary: azul marinho (#1B3A6B) */
+  --primary: oklch(0.32 0.12 240);
+  --primary-foreground: oklch(0.98 0.003 240);
+
+  /* Secondary: azul aço claro (#EAF2F8) */
+  --secondary: oklch(0.93 0.025 220);
+  --secondary-foreground: oklch(0.32 0.12 240);
+
+  /* Muted: cinza azulado suave */
+  --muted: oklch(0.92 0.012 230);
+  --muted-foreground: oklch(0.48 0.05 230);
+
+  /* Accent: azul ciano (#4BAFD6) */
+  --accent: oklch(0.65 0.13 215);
+  --accent-foreground: oklch(0.98 0.003 240);
+
+  /* Destructive: vermelho suave */
+  --destructive: oklch(0.60 0.22 25);
+  --destructive-foreground: oklch(0.98 0.003 240);
+
+  /* Border: cinza azulado */
+  --border: oklch(0.87 0.018 230);
+  --input: oklch(0.96 0.008 230);
+  --ring: oklch(0.50 0.13 220);
+
+  /* Charts: tons da paleta GImports */
+  --chart-1: oklch(0.32 0.12 240);   /* azul marinho */
+  --chart-2: oklch(0.50 0.14 220);   /* azul aço */
+  --chart-3: oklch(0.65 0.13 215);   /* azul ciano */
+  --chart-4: oklch(0.72 0.10 200);   /* azul celeste claro */
+  --chart-5: oklch(0.60 0.22 25);    /* vermelho (negativo) */
+
+  /* Sidebar: azul marinho profundo (#1B3A6B) */
+  --sidebar: oklch(0.28 0.11 240);
+  --sidebar-foreground: oklch(0.95 0.005 240);
+  --sidebar-primary: oklch(0.65 0.13 215);
+  --sidebar-primary-foreground: oklch(0.15 0.06 240);
+  --sidebar-accent: oklch(0.35 0.10 235);
+  --sidebar-accent-foreground: oklch(0.95 0.005 240);
+  --sidebar-border: oklch(0.36 0.09 238);
+  --sidebar-ring: oklch(0.65 0.13 215);
+}
+
+/* ============================================================
+   DARK MODE — Derivado da paleta GImports
+   Background: azul marinho muito escuro
+   Cards: azul marinho escuro
+   Primary: azul ciano (#4BAFD6)
+   Accent: azul aço (#2E6FA3)
+   ============================================================ */
+.dark {
+  /* Background: azul marinho muito escuro */
+  --background: oklch(0.14 0.04 240);
+  --foreground: oklch(0.93 0.008 220);
+
+  /* Cards: azul marinho escuro */
+  --card: oklch(0.19 0.05 240);
+  --card-foreground: oklch(0.93 0.008 220);
+
+  --popover: oklch(0.21 0.055 240);
+  --popover-foreground: oklch(0.93 0.008 220);
+
+  /* Primary: azul ciano vibrante (#4BAFD6) */
+  --primary: oklch(0.65 0.13 215);
+  --primary-foreground: oklch(0.14 0.04 240);
+
+  /* Secondary: azul marinho médio */
+  --secondary: oklch(0.25 0.07 238);
+  --secondary-foreground: oklch(0.88 0.01 220);
+
+  /* Muted */
+  --muted: oklch(0.23 0.06 238);
+  --muted-foreground: oklch(0.60 0.04 225);
+
+  /* Accent: azul aço (#2E6FA3) */
+  --accent: oklch(0.50 0.14 220);
+  --accent-foreground: oklch(0.96 0.005 220);
+
+  /* Destructive */
+  --destructive: oklch(0.65 0.22 25);
+  --destructive-foreground: oklch(0.96 0.005 220);
+
+  /* Border */
+  --border: oklch(0.28 0.07 238);
+  --input: oklch(0.22 0.06 238);
+  --ring: oklch(0.65 0.13 215);
+
+  /* Charts */
+  --chart-1: oklch(0.65 0.13 215);   /* azul ciano */
+  --chart-2: oklch(0.50 0.14 220);   /* azul aço */
+  --chart-3: oklch(0.72 0.10 200);   /* azul celeste */
+  --chart-4: oklch(0.32 0.12 240);   /* azul marinho */
+  --chart-5: oklch(0.65 0.22 25);    /* vermelho */
+
+  /* Sidebar: ainda mais escuro que o background */
+  --sidebar: oklch(0.11 0.035 240);
+  --sidebar-foreground: oklch(0.93 0.008 220);
+  --sidebar-primary: oklch(0.65 0.13 215);
+  --sidebar-primary-foreground: oklch(0.11 0.035 240);
+  --sidebar-accent: oklch(0.20 0.06 238);
+  --sidebar-accent-foreground: oklch(0.93 0.008 220);
+  --sidebar-border: oklch(0.22 0.06 238);
+  --sidebar-ring: oklch(0.65 0.13 215);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Nunito', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
+    }
+  }
+}
