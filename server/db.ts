@@ -237,6 +237,38 @@ export async function createDebtPayment(data: InsertDebtPayment) {
   return db.insert(debtPayments).values(data);
 }
 
+export async function getUserById(id: number) {
+  const db = await getDb();
+  if (!db) return null;
+  const result = await db.select().from(users).where(eq(users.id, id)).limit(1);
+  return result[0] ?? null;
+}
+
+export async function getUserByEmail(email: string) {
+  const db = await getDb();
+  if (!db) return null;
+  const result = await db.select().from(users).where(eq(users.email, email)).limit(1);
+  return result[0] ?? null;
+}
+
+export async function createUser(data: { name: string; email: string; passwordHash: string }) {
+  const db = await getDb();
+  if (!db) throw new Error("DB not available");
+  const countResult = await db.select({ count: sql<number>`count(*)` }).from(users);
+  const isFirst = Number(countResult[0]?.count ?? 0) === 0;
+  const { nanoid } = await import("nanoid");
+  await db.insert(users).values({
+    openId: nanoid(),
+    name: data.name,
+    email: data.email,
+    passwordHash: data.passwordHash,
+    role: isFirst ? "admin" : "user",
+    loginMethod: "email",
+    lastSignedIn: new Date(),
+  });
+  return getUserByEmail(data.email);
+}
+
 // ─── DASHBOARD SUMMARY ────────────────────────────────────────────────────────
 
 export async function getDashboardSummary(userId: number) {
