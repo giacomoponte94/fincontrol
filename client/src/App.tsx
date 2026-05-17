@@ -12,6 +12,7 @@ import History from "./pages/History";
 import Simulator from "./pages/Simulator";
 import Reports from "./pages/Reports";
 import Income from "./pages/Income";
+import Login from "@/pages/Login";
 import DashboardLayout from "./components/DashboardLayout";
 import { useAuth } from "./_core/hooks/useAuth";
 import { getLoginUrl } from "./const";
@@ -37,22 +38,27 @@ function AuthGuard({ children }: { children: React.ReactNode }) {
 
 function AppRoutes() {
   return (
-    <AuthGuard>
-      <DashboardLayout>
-        <Switch>
-          <Route path="/" component={Dashboard} />
-          <Route path="/debts" component={Debts} />
-          <Route path="/fixed-expenses" component={FixedExpenses} />
-          <Route path="/variable-expenses" component={VariableExpenses} />
-          <Route path="/income" component={Income} />
-          <Route path="/history" component={History} />
-          <Route path="/simulator" component={Simulator} />
-          <Route path="/reports" component={Reports} />
-          <Route path="/404" component={NotFound} />
-          <Route component={NotFound} />
-        </Switch>
-      </DashboardLayout>
-    </AuthGuard>
+    <Switch>
+      <Route path="/login" component={Login} />
+      <Route>
+        <AuthGuard>
+          <DashboardLayout>
+            <Switch>
+              <Route path="/" component={Dashboard} />
+              <Route path="/debts" component={Debts} />
+              <Route path="/fixed-expenses" component={FixedExpenses} />
+              <Route path="/variable-expenses" component={VariableExpenses} />
+              <Route path="/income" component={Income} />
+              <Route path="/history" component={History} />
+              <Route path="/simulator" component={Simulator} />
+              <Route path="/reports" component={Reports} />
+              <Route path="/404" component={NotFound} />
+              <Route component={NotFound} />
+            </Switch>
+          </DashboardLayout>
+        </AuthGuard>
+      </Route>
+    </Switch>
   );
 }
 
