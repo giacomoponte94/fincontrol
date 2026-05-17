@@ -1,0 +1,3 @@
+ALTER TABLE `debt_payments` ADD `bankName` enum('bradesco','santander','itau','caixa','banco_brasil','nubank','inter','c6','mercado_pago','xp','other');--> statement-breakpoint
+ALTER TABLE `fixed_expenses` ADD `bankName` enum('bradesco','santander','itau','caixa','banco_brasil','nubank','inter','c6','mercado_pago','xp','other');--> statement-breakpoint
+ALTER TABLE `variable_expenses` ADD `bankName` enum('bradesco','santander','itau','caixa','banco_brasil','nubank','inter','c6','mercado_pago','xp','other');
